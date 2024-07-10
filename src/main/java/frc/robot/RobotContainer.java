@@ -30,10 +30,10 @@ public class RobotContainer {
 
   private void configureBindings() {
     this.controller.povRight()
-        .whileTrue(new TurretCommand(turretSubsystem, -0.2))
+        .whileTrue(new TurretCommand(turretSubsystem, 0.5))
         .onFalse(new TurretCommand(turretSubsystem, 0));
     this.controller.povLeft()
-        .whileTrue(new TurretCommand(turretSubsystem, 0.2))
+        .whileTrue(new TurretCommand(turretSubsystem, -0.5))
         .onFalse(new TurretCommand(turretSubsystem, 0));
 
   }
