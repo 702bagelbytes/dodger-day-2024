@@ -17,9 +17,4 @@ public class TurretCommand extends Command {
     public void initialize() {
         this.turretSubsystem.setSpeed(speed);
     }
-
-    @Override
-    public void execute() {
-        System.out.printf("hello, turning at %.2f\n", speed);
-    }
 }

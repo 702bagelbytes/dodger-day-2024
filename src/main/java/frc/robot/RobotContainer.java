@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -23,17 +24,17 @@ public class RobotContainer {
     this.driveSubsystem
         .setDefaultCommand(new DriveCommand(this.driveSubsystem, controller::getLeftY, controller::getRightX));
     this.turretSubsystem = new TurretSubsystem();
-    // this.turretSubsystem.setDefaultCommand(new
-    // TurretCommand(this.turretSubsystem, ));
     configureBindings();
+
+    SmartDashboard.putData("Toggle encoder limits", Commands.runOnce(this.turretSubsystem::toggleEncoderLimits, this.turretSubsystem));
   }
 
   private void configureBindings() {
     this.controller.povRight()
-        .whileTrue(new TurretCommand(turretSubsystem, 0.5))
+        .whileTrue(new TurretCommand(turretSubsystem, 0.55))
         .onFalse(new TurretCommand(turretSubsystem, 0));
     this.controller.povLeft()
-        .whileTrue(new TurretCommand(turretSubsystem, -0.5))
+        .whileTrue(new TurretCommand(turretSubsystem, -0.55))
         .onFalse(new TurretCommand(turretSubsystem, 0));
 
   }

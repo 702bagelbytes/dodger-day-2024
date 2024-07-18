@@ -19,7 +19,7 @@ public class DriveCommand extends Command {
     @Override
     public void execute() {
         double realTimeSpeed = this.speedFunction.getAsDouble();
-        double realTimeTurn = -this.turnFunction.getAsDouble();
+        double realTimeTurn = -this.turnFunction.getAsDouble() * 0.66;
 
         double left = realTimeSpeed + realTimeTurn;
         double right = realTimeSpeed - realTimeTurn;
