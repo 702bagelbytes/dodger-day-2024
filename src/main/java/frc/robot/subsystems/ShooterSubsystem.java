@@ -11,7 +11,6 @@ public class ShooterSubsystem extends SubsystemBase {
     public final TalonSRX shooterRampLead = new TalonSRX(50);
     public final TalonSRX shooterRampFollow = new TalonSRX(60);
     public final TalonSRX shooterTrigger = new TalonSRX(5);
-    public final TalonSRX shooterFlap = new TalonSRX(6);
 
     private final SlewRateLimiter shooterLimiter = new SlewRateLimiter(0.2);
 
@@ -19,10 +18,8 @@ public class ShooterSubsystem extends SubsystemBase {
         shooterRampLead.setSelectedSensorPosition(0);
         shooterRampFollow.setSelectedSensorPosition(0);
         shooterTrigger.setSelectedSensorPosition(0);
-        shooterFlap.setSelectedSensorPosition(0);
 
         shooterRampLead.configAllSettings(new TalonSRXConfiguration());
-        shooterFlap.configAllSettings(new TalonSRXConfiguration());
         shooterRampFollow.configAllSettings(new TalonSRXConfiguration());
         shooterTrigger.configAllSettings(new TalonSRXConfiguration());
 
@@ -46,9 +43,5 @@ public class ShooterSubsystem extends SubsystemBase {
 
     public void setTriggerSpeed(double speed) {
         this.shooterTrigger.set(TalonSRXControlMode.PercentOutput, speed);
-    }
-
-    public void setFlap(double speed) {
-        this.shooterFlap.set(TalonSRXControlMode.PercentOutput, speed);
     }
 }
