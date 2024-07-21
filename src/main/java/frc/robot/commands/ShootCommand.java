@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class ShootCommand extends SequentialCommandGroup {
-    private final SlewRateLimiter rateLimiter = new SlewRateLimiter(0.1);
+    private final SlewRateLimiter rateLimiter = new SlewRateLimiter(2);
 
     public ShootCommand(ShooterSubsystem shooterSubsystem) {
         // The inputted values are not final. (m/s)
@@ -14,7 +14,7 @@ public class ShootCommand extends SequentialCommandGroup {
             shooterSubsystem.setRampSpeed(1, rateLimiter);
         }, shooterSubsystem);
 
-        var delay = Commands.waitSeconds(1.5);
+        var delay = Commands.waitSeconds(10);
 
         var shoot = Commands.runOnce(() -> {
             shooterSubsystem.setTriggerSpeed(1);
